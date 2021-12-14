@@ -3,12 +3,15 @@
 //
 
 import Foundation
+import Combine
 
 public protocol Searchable: Hashable {
   var searchKey: String { get }
 }
 
 public class SearchService<Item: Searchable> {
+  
+  @Published public var searchResults: NSOrderedSet = NSOrderedSet()
   
   private var rootNode: Node?
   
@@ -73,6 +76,7 @@ public class SearchService<Item: Searchable> {
     return items
   }
   
+  @discardableResult
   public func search(q: String) -> NSOrderedSet {
     guard let rootNode = rootNode else {
       return []
@@ -111,6 +115,8 @@ public class SearchService<Item: Searchable> {
         return []
       }
     }
+    
+    self.searchResults = words
     
     return words
   }
