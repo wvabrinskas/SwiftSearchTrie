@@ -24,10 +24,6 @@ final class SwiftSearchTreeTests: XCTestCase {
   lazy var items: [Item] = {
     return terms.map { Item(searchKey: $0) }
   }()
-  
-  override func setUp() {
-    super.setUp()
-  }
 
   func test_letterSearch() {
     let query = "s"
