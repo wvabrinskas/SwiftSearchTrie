@@ -14,6 +14,7 @@ public class SearchService<Item: Searchable> {
   @Published public var searchResults: NSOrderedSet = NSOrderedSet()
   
   private var rootNode: Node?
+  private var multiwordDelimiter: String = " "
   
   private class Node {
     let id: UUID = .init()
@@ -22,7 +23,8 @@ public class SearchService<Item: Searchable> {
     let items: NSMutableOrderedSet = NSMutableOrderedSet()
   }
   
-  public init(queriableItems: [Item]) {
+  public init(queriableItems: [Item], multiwordDelimiter: String = " ") {
+    self.multiwordDelimiter = multiwordDelimiter
     self.buildTrie(items: queriableItems)
   }
   
@@ -31,7 +33,7 @@ public class SearchService<Item: Searchable> {
     var nextNode = root
     
     for item in items {
-      let splitWords = item.searchKey.lowercased().split(separator: " ")
+      let splitWords = item.searchKey.lowercased().split(separator: self.multiwordDelimiter)
       
       splitWords.forEach { word in
         //before each word we reset to root
