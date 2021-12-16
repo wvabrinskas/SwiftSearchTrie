@@ -29,7 +29,7 @@ public class SearchService<Item: Searchable> {
   }
   
   private func buildTrie(items: [Item]) {
-    let root = Node()
+    let root = self.rootNode ?? Node()
     var nextNode = root
     
     for item in items {
@@ -76,6 +76,10 @@ public class SearchService<Item: Searchable> {
     }
     
     return items
+  }
+  
+  public func insert(items: [Item]) {
+    self.buildTrie(items: items)
   }
   
   @discardableResult

@@ -70,4 +70,19 @@ final class SwiftSearchTreeTests: XCTestCase {
     let results = localService.search(q: query)
     XCTAssert(results.count == 5)
   }
+  
+  func test_insertItems() {
+    let insertKey = "zzzzzz"
+    let item = Item(searchKey: insertKey)
+    
+    let itemsToInsert = [item]
+    let query = "zz"
+    
+    service.insert(items: itemsToInsert)
+    
+    let results = service.search(q: query)
+    
+    XCTAssert(results.count == 1)
+    XCTAssert(results.contains(item) == true)
+  }
 }
