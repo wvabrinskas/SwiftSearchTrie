@@ -1,4 +1,4 @@
-# SwiftSearchTree
+# SwiftSearchTrie
 
 [![Tests](https://github.com/wvabrinskas/SwiftSearchTrie/actions/workflows/tests.yml/badge.svg?branch=main)](https://github.com/wvabrinskas/SwiftSearchTrie/actions/workflows/tests.yml)
 
