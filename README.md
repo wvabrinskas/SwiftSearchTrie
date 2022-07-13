@@ -36,9 +36,10 @@ Create an array of those items and instantiate the `SearchService` with those it
                           "sushi"
   ]
 
+  let items: [Item] = terms.map { Item(searchKey: $0) }}
+
   let service: SearchService = SearchService(queriableItems: items, multiwordDelimiter: " ")
 
-  let items: [Item] = terms.map { Item(searchKey: $0) }}
   ```
 
 This will build the trie tree. 
