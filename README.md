@@ -6,7 +6,11 @@ A swift package that utilizes a trie data structure to build and provide quick a
 
 # Introduction 
 
-[Trie](https://en.wikipedia.org/wiki/Trie) is a data structure typically used for word search because of its quick lookup times compared to other alogrithms. To build a trie the complexity is O(N * M) where N is the all the terms and M is the length of the key. However lookup is typically O(1) in complexity but at worst it's O(M) where M is the length of the search term. 
+[Trie](https://en.wikipedia.org/wiki/Trie) is a data structure typically used for word search because of its quick lookup times compared to other alogrithms. To build a trie the complexity is O(N * M) where N is the all the terms and M is the length of the key. However lookup is typically O(M) where M is the length of the search term. 
+
+For searching, inserting, and deleting some strings of length n in a trie, we need to follow at most n number of pointers from the root to the node for strings, if it exists. Each pointer can be looked up in O(1) time. So overall
+time complexity = n * O(1) = O(n), which is only dependent on the length of the string and independent of the
+number of strings in the trie.
 
 # Implementation
 
